@@ -1,2 +1,4 @@
-// Placeholder para futuras implementações da feature de produtos.
-export {};
+export { default as ProductPage } from "./ProductPage";
+export { default as ProductImport } from "./ProductImport";
+export { default as ProductForm } from "./ProductForm";
+export { default as ProductTable } from "./components/ProductTable";
