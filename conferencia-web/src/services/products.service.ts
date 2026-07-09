@@ -20,3 +20,16 @@ export async function listProducts() {
   const { data, error } = await supabase.from<Produto>("products").select("*");
   return { data, error };
 }
+
+export async function importProducts(products: Omit<Produto, "id" | "created_at">[]) {
+  const { data, error } = await supabase
+    .from<Produto>("products")
+    .upsert(products, { onConflict: "ean13" })
+    .select();
+
+  if (error) {
+    return { data, error };
+  }
+
+  return { data, error };
+}
